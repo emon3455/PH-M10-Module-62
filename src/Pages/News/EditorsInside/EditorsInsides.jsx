@@ -7,7 +7,7 @@ import third from "../../../assets/3.png"
 const EditorsInsides = () => {
     return (
         <div className="">
-            <h2>Editors Inside</h2>
+            <h3 className='text-secondary'>Editors Inside</h3>
             <Row xs={1} md={2} lg={3} className="g-4">
                 <Col>
                     <Card>

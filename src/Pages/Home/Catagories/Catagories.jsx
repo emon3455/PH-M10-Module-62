@@ -8,9 +8,9 @@ const Catagories = () => {
 
     return (
         <div>
-            <h2>
-                This catagory has: {catagoryNews.length}
-            </h2>
+            <h4 className='text-secondary'>
+                Dragon News Home
+            </h4>
             <div className="">
                 {
                     catagoryNews.map(news=> <NewsCard keey={news._id} news={news}></NewsCard>)

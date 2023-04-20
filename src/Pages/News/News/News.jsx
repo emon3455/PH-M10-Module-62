@@ -13,7 +13,7 @@ const News = () => {
     return (
         <div >
 
-            <h2>Dragon News</h2>
+            <h5 className='text-secondary'>Dragon News</h5 >
 
             <Card className='my-4'>
                 <Card.Img variant="top" src={image_url} />
