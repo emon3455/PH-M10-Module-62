@@ -3,16 +3,11 @@ import logo from "../../../assets/logo.png"
 import moment from 'moment';
 import Marquee from "react-fast-marquee";
 import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import { Link } from 'react-router-dom';
-import { AuthContext } from '../../../Providers/AuthProviders';
-import { FaUserCircle } from 'react-icons/fa';
+
 
 const Header = () => {
 
-    const {user} = useContext(AuthContext);
+    
 
     return (
         <div className='container mb-4 p-2'>
@@ -34,37 +29,7 @@ const Header = () => {
                 </Marquee>
             </div>
 
-            <Navbar collapseOnSelect expand="lg" bg="light" variant="light" className='fs-4'>
-                <Container>
-                    <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                    <Navbar.Collapse id="responsive-navbar-nav">
-                    <Nav className="mx-auto fs-5">
-                        <Link className='text-decoration-none text-secondary me-2' to="/">Home</Link>
-                        <Link className='text-decoration-none text-secondary me-2' to="/">About</Link>
-                        <Link className='text-decoration-none text-secondary me-2' to="/">Career</Link>
-                    </Nav>
-                    <Nav className=' d-flex align-items-center '>
-                        
-                        <p className='mx-2 '>
-                            <FaUserCircle className='fs-2'></FaUserCircle>
-                        </p>
-                        <p>
-                            {
-                                user ? 
-                                <button className='btn btn-secondary'>
-                                Log Out
-                                </button>
-                                :
-                                <Link className='btn btn-secondary text-decoration-none'  to="/login">
-                                Log In
-                                </Link>
-                            }
-                        </p>
-                    </Nav>
-                    </Navbar.Collapse>
-                </Container>
-            </Navbar>
-
+           
         </div>
     );
 };
