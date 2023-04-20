@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
     return (
@@ -32,16 +33,17 @@ const Header = () => {
                 <Container>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
-                    <Nav className="mx-auto">
-                        <Nav.Link href="#features">Home</Nav.Link>
-                        <Nav.Link href="#pricing">About</Nav.Link>
-                        <Nav.Link href="#pricing">Career</Nav.Link>
+                    <Nav className="mx-auto ">
+                        <Link className='text-decoration-none text-secondary me-2' to="/">Home</Link>
+                        <Link className='text-decoration-none text-secondary me-2' to="/">About</Link>
+                        <Link className='text-decoration-none text-secondary me-2' to="/">Career</Link>
                     </Nav>
-                    <Nav className='d-flex align-items-center'>
-                        <Nav.Link href="#deets">profile</Nav.Link>
-                        <Nav.Link eventKey={2} href="#memes">
-                            <Button variant="secondary">Log In</Button>
-                        </Nav.Link>
+                    <Nav className='d-flex align-items-center '>
+                        
+                        <Link className='text-decoration-none text-secondary me-2' to="/">profile</Link>
+                        <Link className='btn btn-secondary text-decoration-none' eventKey={2} to="/login">
+                            Log In
+                        </Link>
                     </Nav>
                     </Navbar.Collapse>
                 </Container>
