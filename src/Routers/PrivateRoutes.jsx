@@ -1,11 +1,16 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../Providers/AuthProviders';
 import { Navigate, useLocation } from 'react-router-dom';
+import { Container, Spinner } from 'react-bootstrap';
 
 const PrivateRoutes = ({children}) => {
 
-    const {user} = useContext(AuthContext);
+    const {user,loading} = useContext(AuthContext);
     const location = useLocation();
+
+    if(loading){
+        return <Spinner animation="border" variant="primary" />
+    }
 
     if(user){
         return children;

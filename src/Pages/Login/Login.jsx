@@ -50,10 +50,6 @@ const Login = () => {
                             <Form.Control type="password" name='password' placeholder="Password" />
                         </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                            <Form.Check type="checkbox" label="Accept Our Terms and Conditions" />
-                        </Form.Group>
-
                         <Button variant="primary" type="submit">
                             Log In
                         </Button>

@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 const Register = () => {
 
     const [error, setError] = useState("");
+    const [accepted , setAccepted] = useState(false);
 
     const {createUser} = useContext(AuthContext);
 
@@ -70,7 +71,11 @@ const Register = () => {
                             <Form.Control type="password" placeholder="Password" name="password" />
                         </Form.Group>
 
-                        <Button variant="primary" type="submit">
+                        <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                            <Form.Check onClick={()=>setAccepted(true)} type="checkbox" label={<>Accept Our <Link to="/terms">Terms and Conditions</Link></>} />
+                        </Form.Group>
+
+                        <Button disabled={!accepted} variant="primary" type="submit">
                             Register
                         </Button>
 
