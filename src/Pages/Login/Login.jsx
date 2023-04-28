@@ -3,12 +3,12 @@ import { Card, Container } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { AuthContext } from '../../Providers/AuthProviders';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Login = () => {
 
     const [error, setError] = useState("");
-
+    const navigate = useNavigate();
     const {signIn} = useContext(AuthContext);
 
 
@@ -21,7 +21,9 @@ const Login = () => {
         signIn(email,password)
         .then(res=>{
             const logedUser = res.user;
-            console.log(logedUser);
+            alert("Log in successfully done!");
+            form.reset();
+            navigate("/")
         })
         .catch(er=>{
             setError(er.message);

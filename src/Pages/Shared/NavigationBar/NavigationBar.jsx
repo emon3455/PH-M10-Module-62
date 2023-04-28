@@ -6,7 +6,17 @@ import { FaUserCircle } from 'react-icons/fa';
 
 const NavigationBar = () => {
 
-    const {user} = useContext(AuthContext);
+    const {user ,  logOut} = useContext(AuthContext);
+
+    const handleLogOut = () =>{
+        logOut()
+        .then(res=>{
+            alert("log out done!!");
+        })
+        .catch(er=>{
+            alert(er.message);
+        })
+    }
 
     return (
         <Container className='my-4'>
@@ -19,17 +29,20 @@ const NavigationBar = () => {
                             <Link className='text-decoration-none text-secondary me-2' to="/">Home</Link>
                             <Link className='text-decoration-none text-secondary me-2' to="/">About</Link>
                             <Link className='text-decoration-none text-secondary me-2' to="/register">Register</Link>
-                            <Link className='text-decoration-none text-secondary me-2' to="/login">Login</Link>
                         </Nav>
                         <Nav className=' d-flex align-items-center '>
 
                             <p className='mx-2 '>
-                                <FaUserCircle className='fs-2'></FaUserCircle>
+                                <img style={{width: "40px"}} className='rounded-circle' src={ user 
+                                    ? user.photoURL 
+                                    : "https://avatars.githubusercontent.com/u/35440139?v=4"
+                                } alt="" />
+                                
                             </p>
                             <p>
                                 {
                                     user ?
-                                        <button className='btn btn-secondary'>
+                                        <button onClick={handleLogOut} className='btn btn-secondary'>
                                             Log Out
                                         </button>
                                         :
