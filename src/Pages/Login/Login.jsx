@@ -3,13 +3,16 @@ import { Card, Container } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { AuthContext } from '../../Providers/AuthProviders';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {
 
     const [error, setError] = useState("");
-    const navigate = useNavigate();
     const {signIn} = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/"
+    console.log(from);
 
 
     const handleLogin =(e)=>{
@@ -23,7 +26,7 @@ const Login = () => {
             const logedUser = res.user;
             alert("Log in successfully done!");
             form.reset();
-            navigate("/")
+            navigate(from, {replace: true})
         })
         .catch(er=>{
             setError(er.message);
