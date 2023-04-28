@@ -1,10 +1,14 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Card, Container } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { AuthContext } from '../../Providers/AuthProviders';
+import { updateProfile } from 'firebase/auth';
+import { Link } from 'react-router-dom';
 
 const Register = () => {
+
+    const [error, setError] = useState("");
 
     const {createUser} = useContext(AuthContext);
 
@@ -16,7 +20,28 @@ const Register = () => {
         const photo = form.photo.value;
         const password = form.password.value;
 
-        console.log(name,email,password,photo);
+        createUser(email,password)
+        .then(res=>{
+            const regUser= res.user;
+
+            updateProfile(regUser, {
+                displayName: name,
+                photoURL: photo,
+              })
+              .then(() => {
+                
+              })
+              .catch((err) => {
+                setError(err.message)
+              });
+
+        })
+        .catch(er=>{
+            setError(er.message);
+        })
+
+        alert("user Successfully created");
+        form.reset();
     }
 
     return (
@@ -48,6 +73,12 @@ const Register = () => {
                         <Button variant="primary" type="submit">
                             Register
                         </Button>
+
+                        <p className='text-center'> 
+                            Already have an Account? <Link to="/login">Login</Link>
+                        </p> 
+
+                        <p className='text-danger'>{error}</p>
                     </Form>
                 </Card>
             </Container>
