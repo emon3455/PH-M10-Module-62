@@ -5,6 +5,7 @@ import Form from 'react-bootstrap/Form';
 import { AuthContext } from '../../Providers/AuthProviders';
 import { updateProfile } from 'firebase/auth';
 import { Link } from 'react-router-dom';
+import { useTitle } from '../../hooks/useTitle';
 
 const Register = () => {
 
@@ -12,6 +13,8 @@ const Register = () => {
     const [accepted , setAccepted] = useState(false);
 
     const {createUser} = useContext(AuthContext);
+
+    useTitle("Register")
 
     const handleSubmit = e =>{
         e.preventDefault();
