@@ -14,7 +14,7 @@ const Register = () => {
 
     const {createUser} = useContext(AuthContext);
 
-    useTitle("Register")
+    useTitle("Register");
 
     const handleSubmit = e =>{
         e.preventDefault();
