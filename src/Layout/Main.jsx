@@ -8,8 +8,12 @@ import Leftnav from '../Pages/Shared/leftNav/Leftnav';
 import RightNav from '../Pages/Shared/rightNav/RightNav';
 import { Outlet } from 'react-router-dom';
 import NavigationBar from '../Pages/Shared/NavigationBar/NavigationBar';
+import { useTitle } from '../hooks/useTitle';
 
 const Main = () => {
+    
+    useTitle("Dragon News");
+
     return (
         <div>
             <Header></Header>
